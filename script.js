@@ -1,8 +1,8 @@
 // Data
 const heroSlides = [
-    { image: "https://via.placeholder.com/1200x600", title: "Seguridad para su hogar", description: "Proteja su propiedad con nuestros cercos de alta calidad" },
-    { image: "https://via.placeholder.com/1200x600", title: "Soluciones industriales", description: "Cercos resistentes para grandes áreas industriales" },
-    { image: "https://via.placeholder.com/1200x600", title: "Instalación profesional", description: "Nuestro equipo experto garantiza una instalación perfecta" },
+    { image: "photo-1503918756811-975bd3397178.jpeg", title: "Seguridad para su hogar", description: "Proteja su propiedad con nuestros cercos de alta calidad" },
+    { image: "photo-1597502999344-5a3e933dc108.jpeg", title: "Soluciones industriales", description: "Cercos resistentes para grandes áreas industriales" },
+    { image: "photo-1680430631447-e7b1b2e08bec.jpeg", title: "Instalación profesional", description: "Nuestro equipo experto garantiza una instalación perfecta" },
 ];
 
 const products = [

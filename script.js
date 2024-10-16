@@ -1,8 +1,8 @@
 // Data
 const heroSlides = [
-    { image: "photo-1503918756811-975bd3397178.jpeg", title: "Seguridad para su hogar", description: "Proteja su propiedad con nuestros cercos de alta calidad" },
-    { image: "cercoindustrial.png", title: "Soluciones industriales", description: "Cercos resistentes para grandes áreas industriales" },
-    { image: "photo-1680430631447-e7b1b2e08bec.jpeg", title: "Instalación profesional", description: "Nuestro equipo experto garantiza una instalación perfecta" },
+    { image: "https://via.placeholder.com/1920x1080", title: "Seguridad para su hogar", description: "Proteja su propiedad con nuestros cercos de alta calidad" },
+    { image: "https://via.placeholder.com/1920x1080", title: "Soluciones industriales", description: "Cercos resistentes para grandes áreas industriales" },
+    { image: "https://via.placeholder.com/1920x1080", title: "Instalación profesional", description: "Nuestro equipo experto garantiza una instalación perfecta" },
 ];
 
 const products = [
@@ -25,7 +25,7 @@ let currentFilter = 'all';
 const header = document.getElementById('header');
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
-const hero = document.getElementById('hero');
+const heroSlider = document.getElementById('heroSlider');
 const heroTitle = document.getElementById('heroTitle');
 const heroDescription = document.getElementById('heroDescription');
 const heroIndicators = document.getElementById('heroIndicators');
@@ -42,10 +42,15 @@ const closeCart = document.getElementById('closeCart');
 const cartCount = document.getElementById('cartCount');
 const requestQuote = document.getElementById('requestQuote');
 const contactForm = document.getElementById('contactForm');
+const faqButtons = document.querySelectorAll('#faq button');
 
 // Functions
 function updateHeroSlide() {
-    hero.style.backgroundImage = `url(${heroSlides[currentSlide].image})`;
+    heroSlider.innerHTML = '';
+    const slide = document.createElement('div');
+    slide.className = 'hero-slide absolute inset-0 hero-image';
+    slide.style.backgroundImage = `url(${heroSlides[currentSlide].image})`;
+    heroSlider.appendChild(slide);
     heroTitle.textContent = heroSlides[currentSlide].title;
     heroDescription.textContent = heroSlides[currentSlide].description;
     updateHeroIndicators();
@@ -65,7 +70,7 @@ function updateHeroIndicators() {
 }
 
 function nextSlide() {
-    currentSlide = (currentSlide + 1) % heroSlides.length;
+    currentSlide = (currentSlide + 1)  % heroSlides.length;
     updateHeroSlide();
 }
 
@@ -244,11 +249,21 @@ contactForm.addEventListener('submit', (e) => {
     contactForm.reset();
 });
 
+faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('svg');
+        answer.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+    });
+});
+
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
     AOS.init({
         duration: 1000,
         once: true,
+        offset: 200,
     });
     updateHeroSlide();
     setInterval(nextSlide, 5000);

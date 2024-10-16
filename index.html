@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perimetrales Las Flores</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-slide {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .product-slider {
+            scroll-behavior: smooth;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spin {
+            animation: spin 2s linear infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white text-gray-900 relative">
+    <!-- Top Banner -->
+    <div class="bg-red-600 text-white py-2 px-4 text-center">
+        <p class="text-sm font-semibold">¡Oferta especial! 15% de descuento en todos los cercos este mes.</p>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="fixed w-full z-20 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-red-600 flex items-center justify-center rounded-full mr-2 spin">
+                    <span class="text-white font-bold">PLF</span>
+                </div>
+                <span class="text-xl font-bold">Perimetrales Las Flores</span>
+            </div>
+            <nav class="hidden md:flex space-x-4">
+                <a href="#about" class="hover:text-red-600 transition-colors">Sobre Nosotros</a>
+                <a href="#services" class="hover:text-red-600 transition-colors">Servicios</a>
+                <a href="#products" class="hover:text-red-600 transition-colors">Productos</a>
+                <a href="#contact" class="hover:text-red-600 transition-colors">Contacto</a>
+            </nav>
+            <button id="menuToggle" class="md:hidden">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden bg-white shadow-md">
+            <nav class="flex flex-col items-center py-4">
+                <a href="#about" class="py-2 hover:text-red-600 transition-colors">Sobre Nosotros</a>
+                <a href="#services" class="py-2 hover:text-red-600 transition-colors">Servicios</a>
+                <a href="#products" class="py-2 hover:text-red-600 transition-colors">Productos</a>
+                <a href="#contact" class="py-2 hover:text-red-600 transition-colors">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Slider -->
+        <section id="hero" class="relative h-screen">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <div class="text-center text-white">
+                    <h1 id="heroTitle" class="text-4xl md:text-6xl font-bold mb-4"></h1>
+                    <p id="heroDescription" class="text-xl md:text-2xl"></p>
+                </div>
+            </div>
+            <div id="heroIndicators" class="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Sobre Nosotros</h2>
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <img src="https://via.placeholder.com/400x300" alt="Equipo de trabajo" class="rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <p class="text-lg mb-4">
+                            Perimetrales Las Flores es una empresa líder en la instalación de cercos perimetrales con más de una década de experiencia. Nos especializamos en la venta de materiales y colocación de cercos con mano de obra especializada.
+                        </p>
+                        <p class="text-lg">
+                            Nuestro compromiso es brindar seguridad y tranquilidad a nuestros clientes, ofreciendo soluciones personalizadas y de alta calidad para cada proyecto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Nuestros Servicios</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Instalación de Cercos</h3>
+                        <p>Instalamos cercos perimetrales de alta calidad para proteger su propiedad.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Venta de Materiales</h3>
+                        <p>Ofrecemos una amplia gama de materiales para proyectos de cercado.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Mantenimiento</h3>
+                        <p>Servicios de mantenimiento y reparación para mantener sus cercos en óptimas condiciones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Productos y Servicios</h2>
+                <div class="flex justify-center mb-8">
+                    <button id="filterAll" class="px-4 py-2 rounded-l-lg bg-red-600 text-white">Todos</button>
+                    <button id="filterProducts" class="px-4 py-2 bg-gray-200">Productos</button>
+                    <button id="filterServices" class="px-4 py-2 rounded-r-lg bg-gray-200">Servicios</button>
+                </div>
+                <div class="relative">
+                    <button id="sliderLeft" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div id="productSlider" class="overflow-x-auto flex space-x-6 py-4 product-slider">
+                        <!-- Products will be dynamically added here -->
+                    </div>
+                    <button id="sliderRight" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Section -->
+        <section class="bg-red-600 text-white py-12">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-4">¡Oferta Especial!</h2>
+                <p class="text-xl mb-8">Obtenga un 10% de descuento en su próxima instalación de cerco. ¡Contáctenos hoy mismo!</p>
+                <a href="#contact" class="bg-white text-red-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">Contactar Ahora</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center">Contacto</h2>
+                <div class="flex flex-col md:flex-row justify-between">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <form id="contactForm" class="space-y-4">
+                            <input type="text" placeholder="Nombre" class="w-full p-2 border border-gray-300 rounded" required>
+                            <input type="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded" required>
+                            <textarea placeholder="Mensaje" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
+                            <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition-colors">Enviar</button>
+                        </form>
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-red-600 mr-2"></i>
+                                <span>+54 9 11 1234-5678</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-red-600 mr-2"></i>
+                                <span>info@perimetraleslasflorescba.com</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-red-600 mr-2"></i>
+                                <span>Av. Fuerza Aerea 2883 (Ruta 20), Córdoba, Argentina 5000</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-red-600 mr-2"></i>
+                                <span>Lunes a Viernes: 9:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-instagram text-red-600 mr-2"></i>
+                                <a href="https://www.instagram.com/perimetraleslasflorescba" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 transition-colors">@perimetraleslasflorescba</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2024 Perimetrales Las Flores. Todos los derechos reservados.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-red-600 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-red-600 transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-red-600 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <a href="https://dualitydomain.com" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-red-600 transition-colors">
+                    Powered by Duality Domain
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Cart -->
+    <div id="floatingCart" class="fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-50 overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Su Carrito</h3>
+                <button id="closeCart" class="text-gray-500 hover:text-red-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <button id="requestQuote" class="w-full bg-red-600 text-white px-4 py-2 rounded mt-4 hover:bg-red-700 transition-colors">
+                Solicitar Presupuesto
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button -->
+    <button id="cartButton" class="fixed bottom-24 right-4 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition-colors z-40">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-white text-red-600 rounded-full w-6  h-6 flex items-center justify-center text-xs font-bold">0</span>
+    </button>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5491112345678" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors z-40">
+        <i class="fab fa-whatsapp w-6 h-6"></i>
+    </a>
+
+    <script>
+        // Data
+        const heroSlides = [
+            { image: "https://via.placeholder.com/1200x600", title: "Seguridad para su hogar", description: "Proteja su propiedad con nuestros cercos de alta calidad" },
+            { image: "https://via.placeholder.com/1200x600", title: "Soluciones industriales", description: "Cercos resistentes para grandes áreas industriales" },
+            { image: "https://via.placeholder.com/1200x600", title: "Instalación profesional", description: "Nuestro equipo experto garantiza una instalación perfecta" },
+        ];
+
+        const products = [
+            { id: 1, name: "Cerco Olímpico", description: "Ideal para grandes perímetros", category: 'product', image: "https://via.placeholder.com/300x200" },
+            { id: 2, name: "Cerco Romboidal", description: "Perfecto para áreas residenciales", category: 'product', image: "https://via.placeholder.com/300x200" },
+            { id: 3, name: "Cerco Eléctrico", description: "Máxima seguridad para su propiedad", category: 'product', image: "https://via.placeholder.com/300x200" },
+            { id: 4, name: "Portón Automático", description: "Comodidad y seguridad en su entrada", category: 'product', image: "https://via.placeholder.com/300x200" },
+            { id: 5, name: "Concertina", description: "Protección adicional para muros", category: 'product', image: "https://via.placeholder.com/300x200" },
+            { id: 6, name: "Instalación Estándar", description: "Servicio de instalación profesional", category: 'service', image: "https://via.placeholder.com/300x200" },
+            { id: 7, name: "Mantenimiento de Cercos", description: "Servicio de mantenimiento periódico", category: 'service', image: "https://via.placeholder.com/300x200" },
+            { id: 8, name: "Reparación de Cercos", description: "Soluciones rápidas y efectivas", category: 'service', image: "https://via.placeholder.com/300x200" },
+        ];
+
+        // State
+        let currentSlide = 0;
+        let cart = [];
+        let currentFilter = 'all';
+
+        // DOM Elements
+        const header = document.getElementById('header');
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const hero = document.getElementById('hero');
+        const heroTitle = document.getElementById('heroTitle');
+        const heroDescription = document.getElementById('heroDescription');
+        const heroIndicators = document.getElementById('heroIndicators');
+        const productSlider = document.getElementById('productSlider');
+        const sliderLeft = document.getElementById('sliderLeft');
+        const sliderRight = document.getElementById('sliderRight');
+        const filterAll = document.getElementById('filterAll');
+        const filterProducts = document.getElementById('filterProducts');
+        const filterServices = document.getElementById('filterServices');
+        const floatingCart = document.getElementById('floatingCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartButton = document.getElementById('cartButton');
+        const closeCart = document.getElementById('closeCart');
+        const cartCount = document.getElementById('cartCount');
+        const requestQuote = document.getElementById('requestQuote');
+        const contactForm = document.getElementById('contactForm');
+
+        // Functions
+        function updateHeroSlide() {
+            hero.style.backgroundImage = `url(${heroSlides[currentSlide].image})`;
+            heroTitle.textContent = heroSlides[currentSlide].title;
+            heroDescription.textContent = heroSlides[currentSlide].description;
+            updateHeroIndicators();
+        }
+
+        function updateHeroIndicators() {
+            heroIndicators.innerHTML = '';
+            heroSlides.forEach((_, index) => {
+                const indicator = document.createElement('button');
+                indicator.className = `w-3 h-3 rounded-full ${index === currentSlide ? 'bg-white' : 'bg-gray-400'}`;
+                indicator.onclick = () => {
+                    currentSlide = index;
+                    updateHeroSlide();
+                };
+                heroIndicators.appendChild(indicator);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            updateHeroSlide();
+        }
+
+        function renderProducts() {
+            productSlider.innerHTML = '';
+            const filteredProducts = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
+            filteredProducts.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.className = 'bg-gray-100 p-6 rounded-lg shadow-md flex-shrink-0 w-72';
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-40 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">${product.name}</h3>
+                    <p class="mb-4">${product.description}</p>
+                    <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors flex items-center add-to-cart" data-id="${product.id}">
+                        <i class="fas fa-plus mr-2"></i>
+                        Agregar al carrito
+                    </button>
+                `;
+                productSlider.appendChild(productElement);
+            });
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.product.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ product, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.product.id !== productId);
+            updateCart();
+        }
+
+        function updateQuantity(productId, newQuantity) {
+            const item = cart.find(item => item.product.id === productId);
+            if (item) {
+                if (newQuantity < 1) {
+                    removeFromCart(productId);
+                } else {
+                    item.quantity = newQuantity;
+                }
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            cartItems.innerHTML = '';
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Su carrito está vacío.</p>';
+                requestQuote.style.display = 'none';
+            } else {
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex items-center justify-between py-2 border-b';
+                    itemElement.innerHTML = `
+                        <div>
+                            <h4 class="font-semibold">${item.product.name}</h4>
+                            <div class="flex items-center mt-1">
+                                <button class="text-gray-500 hover:text-red-600 update-quantity" data-id="${item.product.id}" data-action="decrease">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="mx-2">${item.quantity}</span>
+                                <button class="text-gray-500 hover:text-red-600 update-quantity" data-id="${item.product.id}" data-action="increase">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="text-gray-500 hover:text-red-600 remove-from-cart" data-id="${item.product.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    `;
+                    cartItems.appendChild(itemElement);
+                });
+                requestQuote.style.display = 'block';
+            }
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+        }
+
+        function requestQuoteViaWhatsApp() {
+            const message = cart.map(item => `${item.quantity}x ${item.product.name}`).join('\n');
+            const encodedMessage = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para:\n\n${message}`);
+            window.open(`https://wa.me/5491112345678?text=${encodedMessage}`, '_blank');
+        }
+
+        // Event Listeners
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white', 'shadow-md');
+            } else {
+                header.classList.remove('bg-white', 'shadow-md');
+            }
+        });
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        sliderLeft.addEventListener('click', () => {
+            productSlider.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+
+        sliderRight.addEventListener('click', () => {
+            productSlider.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+
+        filterAll.addEventListener('click', () => {
+            currentFilter = 'all';
+            renderProducts();
+            updateFilterButtons();
+        });
+
+        filterProducts.addEventListener('click', () => {
+            currentFilter = 'product';
+            renderProducts();
+            updateFilterButtons();
+        });
+
+        filterServices.addEventListener('click', () => {
+            currentFilter = 'service';
+            renderProducts();
+            updateFilterButtons();
+        });
+
+        productSlider.addEventListener('click', (e) => {
+            if (e.target.classList.contains('add-to-cart')) {
+                const productId = parseInt(e.target.dataset.id);
+                addToCart(productId);
+            }
+        });
+
+        cartButton.addEventListener('click', () => {
+            floatingCart.classList.toggle('translate-x-full');
+        });
+
+        closeCart.addEventListener('click', () => {
+            floatingCart.classList.add('translate-x-full');
+        });
+
+        cartItems.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-from-cart')) {
+                const productId = parseInt(e.target.dataset.id);
+                removeFromCart(productId);
+            } else if (e.target.classList.contains('update-quantity')) {
+                const productId = parseInt(e.target.dataset.id);
+                const action = e.target.dataset.action;
+                const item = cart.find(item => item.product.id === productId);
+                if (item) {
+                    updateQuantity(productId, action === 'increase' ? item.quantity + 1 : item.quantity - 1);
+                }
+            }
+        });
+
+        requestQuote.addEventListener('click', requestQuoteViaWhatsApp);
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the form data to a server
+            alert('Formulario enviado. Nos pondremos en contacto pronto.');
+            contactForm.reset();
+        });
+
+        function updateFilterButtons() {
+            [filterAll, filterProducts, filterServices].forEach(button => {
+                button.classList.remove('bg-red-600', 'text-white', 'bg-gray-200');
+                button.classList.add('bg-gray-200');
+            });
+            const activeButton = currentFilter === 'all' ? filterAll : 
+                                 currentFilter === 'product' ? filterProducts : filterServices;
+            activeButton.classList.remove('bg-gray-200');
+            activeButton.classList.add('bg-red-600', 'text-white');
+        }
+
+        // Initialization
+        updateHeroSlide();
+        setInterval(nextSlide, 5000);
+        renderProducts();
+        updateCart();
+
+    </script>
+</body>
+</html>

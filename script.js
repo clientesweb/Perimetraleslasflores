@@ -158,7 +158,7 @@ function updateCart() {
 function requestQuoteViaWhatsApp() {
     const message = cart.map(item => `${item.quantity}x ${item.product.name}`).join('\n');
     const encodedMessage = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para:\n\n${message}`);
-    window.open(`https://wa.me/5491112345678?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/543518047696?text=${encodedMessage}`, '_blank');
 }
 
 function updateFilterButtons() {

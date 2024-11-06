@@ -26,14 +26,17 @@
         :root {
             --primary-color: #E31E24;
             --secondary-color: #58595B;
+            --grafiant-blue: #0000FF;
+            --grafiant-green: #00FF00;
+            --grafiant-red: #FF0000;
         }
         body {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0h100v100H0z' fill='%23f3f4f6'/%3E%3Cpath d='M10 0v100M20 0v100M30 0v100M40 0v100M50 0v100M60 0v100M70 0v100M80 0v100M90 0v100' stroke='%23e5e7eb' stroke-width='0.5'/%3E%3Cpath d='M0 10h100M0 20h100M0 30h100M0 40h100M0 50h100M0 60h100M0 70h100M0 80h100M0 90h100' stroke='%23e5e7eb' stroke-width='0.5'/%3E%3C/svg%3E");
         }
-        .bg-red-600 { background-color: var(--primary-color); }
-        .text-red-600 { color: var(--primary-color); }
-        .hover\:bg-red-700:hover { background-color: #C71A1F; }
-        .hover\:text-red-600:hover { color: var(--primary-color); }
+        .bg-red-600 { background-color: var(--grafiant-red); }
+        .text-red-600 { color: var(--grafiant-red); }
+        .hover\:bg-red-700:hover { background-color: var(--grafiant-blue); }
+        .hover\:text-red-600:hover { color: var(--grafiant-red); }
         .preloader {
             position: fixed;
             top: 0;
@@ -47,8 +50,8 @@
             z-index: 9999;
         }
         .preloader-logo {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             animation: pulse 1.5s infinite;
         }
         @keyframes pulse {
@@ -106,6 +109,30 @@
                 background-attachment: fixed;
             }
         }
+        .header-icon, .footer-icon {
+            font-size: 1.5rem;
+        }
+        #floatingCartButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--grafiant-blue);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        #floatingCartButton:hover {
+            transform: scale(1.1);
+            background-color: var(--grafiant-green);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-white text-gray-900 relative">
@@ -144,9 +171,9 @@
                 <a href="#contact" class="hover:text-red-600 transition-colors">Contacto</a>
             </nav>
             <div class="hidden md:flex space-x-4">
-                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-facebook-f header-icon"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-twitter header-icon"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-instagram header-icon"></i></a>
             </div>
             <button id="menuToggle" class="md:hidden">
                 <i class="fas fa-bars"></i>
@@ -371,13 +398,13 @@
                         <li>Av. Armada Argentina 188, Córdoba</li>
                         <li>Tel: 877009</li>
                         <li>WhatsApp: 351 155382361</li>
-                        <li>info@perimetraleslasflorescba.com</li>
+                        <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="127b7c747d526277607b7f776660737e77617e7361747e7d6077617170733c717d7f">[email&#160;protected]</a></li>
                     </ul>
                     <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-facebook-f footer-icon"></i></a>
+                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-twitter footer-icon"></i></a>
+                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-instagram footer-icon"></i></a>
+                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-linkedin-in footer-icon"></i></a>
                     </div>
                 </div>
             </div>
@@ -391,7 +418,7 @@
     </footer>
 
     <!-- Floating Cart -->
-    <div id="floatingCart" class="fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-50 overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div id="floatingCart" class="fixed top-0 right-0 h-full w-80 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
         <div class="p-4">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">Su Carrito</h3>
@@ -408,11 +435,18 @@
         </div>
     </div>
 
+    <!-- Floating Cart Button -->
+    <button id="floatingCartButton" class="fixed bottom-20 right-4 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-colors z-50">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cartItemCount" class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">0</span>
+    </button>
+
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/543518047696" target="_blank" rel="noopener noreferrer" class="float-button fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-colors">
+    <a href="https://wa.me/543518047696" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-colors z-50">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>

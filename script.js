@@ -5,7 +5,7 @@ AOS.init();
 const products = [
     {
         name: 'Cinta cubre cerco',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/cinta.png',
         description: 'Cinta de alta calidad para cubrir y proteger cercos, mejorando su apariencia y durabilidad.',
         type: 'product'
     },

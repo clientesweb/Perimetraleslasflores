@@ -92,7 +92,7 @@
             }
         }
         #floatingCartButton {
-            bottom: 120px;
+            bottom: 80px;
             right: 20px;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
         }
@@ -101,7 +101,20 @@
         }
         #floatingWhatsAppButton {
             bottom: 20px;
-            left: 20px;
+            right: 20px;
+        }
+        @media (max-width: 768px) {
+            #header {
+                top: 0;
+            }
+            #topBanner {
+                position: relative;
+            }
+            #floatingWhatsAppButton {
+                bottom: 20px;
+                left: 20px;
+                right: auto;
+            }
         }
         .btn-primary {
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
@@ -443,9 +456,12 @@
             <div class="p-4">
                 <h3 class="text-lg font-semibold mb-2"></h3>
                 <p class="text-gray-600 mb-4 h-24 overflow-y-auto"></p>
-                <button class="w-full btn-primary px-4 py-2 rounded add-to-cart">
-                    Solicitar Información
-                </button>
+                <div class="flex items-center justify-between">
+                    <input type="number" min="1" value="1" class="w-16 p-1 border border-gray-300 rounded text-center product-quantity">
+                    <button class="btn-primary px-4 py-2 rounded add-to-cart">
+                        Agregar
+                    </button>
+                </div>
             </div>
         </div>
     </template>

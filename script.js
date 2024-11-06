@@ -1,228 +1,358 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS
-    AOS.init();
+// Initialize AOS
+AOS.init();
 
-    // Preloader
-    window.addEventListener('load', function() {
-        document.querySelector('.preloader').style.display = 'none';
-    });
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.classList.add('bg-white', 'shadow-md');
-        } else {
-            header.classList.remove('bg-white', 'shadow-md');
-        }
-    });
-
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuToggle.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-    });
-
-    // Top banner slider
-    const bannerSlides = document.querySelectorAll('.banner-slide');
-    let currentBannerSlide = 0;
-    function showNextBannerSlide() {
-        bannerSlides[currentBannerSlide].classList.remove('active');
-        currentBannerSlide = (currentBannerSlide + 1) % bannerSlides.length;
-        bannerSlides[currentBannerSlide].classList.add('active');
+// Updated products array with descriptions instead of prices
+const products = [
+    {
+        name: 'Cinta cubre cerco',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Cinta de alta calidad para cubrir y proteger cercos, mejorando su apariencia y durabilidad.',
+        type: 'product'
+    },
+    {
+        name: 'Concertinas',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Alambre de seguridad en espiral, ideal para reforzar la protección en la parte superior de cercos y muros.',
+        type: 'product'
+    },
+    {
+        name: 'Mallas electrosoldadas',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Mallas resistentes y duraderas, perfectas para cercos de seguridad en áreas industriales y residenciales.',
+        type: 'product'
+    },
+    {
+        name: 'Pinches de seguridad',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Elementos disuasorios para la parte superior de muros y cercos, aumentando la seguridad perimetral.',
+        type: 'product'
+    },
+    {
+        name: 'Puertas y portones a medida',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Soluciones personalizadas para accesos seguros y estéticos, adaptadas a sus necesidades específicas.',
+        type: 'product'
+    },
+    {
+        name: 'Tejidos romboidales',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Malla versátil y económica, ideal para cercos residenciales y deportivos.',
+        type: 'product'
+    },
+    {
+        name: 'Tejido exagonal',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Malla de diseño hexagonal, perfecta para cercos de jardín y contención de animales.',
+        type: 'product'
+    },
+    {
+        name: 'Tela mosquitera',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Malla fina para protección contra insectos, ideal para ventanas y puertas.',
+        type: 'product'
+    },
+    {
+        name: 'Tela para cercos',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Tela resistente y duradera para cercos temporales o permanentes en construcciones y eventos.',
+        type: 'product'
+    },
+    {
+        name: 'Instalación de Cercos',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Servicio profesional de instalación de cercos perimetrales para hogares, empresas e industrias.',
+        type: 'service'
+    },
+    {
+        name: 'Mantenimiento de Cercos',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Servicio de mantenimiento y reparación para mantener sus cercos en óptimas condiciones.',
+        type: 'service'
+    },
+    {
+        name: 'Asesoramiento Personalizado',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Consultoría experta para ayudarle a elegir la mejor solución de cercado para su propiedad.',
+        type: 'service'
     }
-    setInterval(showNextBannerSlide, 5000);
+];
 
-    // Hero slider
-    const heroSlider = document.getElementById('heroSlider');
-    const heroTitle = document.getElementById('heroTitle');
-    const heroDescription = document.getElementById('heroDescription');
-    const heroIndicators = document.getElementById('heroIndicators');
-    const heroSlides = [
-        {
-            image: 'https://via.placeholder.com/1920x1080',
-            title: 'Expertos en Cercos Perimetrales',
-            description: 'Protegemos lo que más valoras'
-        },
-        {
-            image: 'https://via.placeholder.com/1920x1080',
-            title: 'Soluciones de Seguridad a Medida',
-            description: 'Diseñamos e instalamos cercos para todo tipo de propiedades'
-        },
-        {
-            image: 'https://via.placeholder.com/1920x1080',
-            title: 'Calidad y Durabilidad Garantizadas',
-            description: 'Materiales de primera calidad y mano de obra especializada'
-        }
-    ];
-    let currentHeroSlide = 0;
-    function showHeroSlide(index) {
-        heroSlider.style.backgroundImage = `url(${heroSlides[index].image})`;
-        heroTitle.textContent = heroSlides[index].title;
-        heroDescription.textContent = heroSlides[index].description;
-        updateHeroIndicators();
+// Hero slider data
+const heroSlides = [
+    {
+        image: 'https://via.placeholder.com/1920x1080',
+        title: 'Expertos en Cercos Perimetrales',
+        description: 'Protegemos su propiedad con soluciones de alta calidad'
+    },
+    {
+        image: 'https://via.placeholder.com/1920x1080',
+        title: 'Seguridad y Estética',
+        description: 'Diseños personalizados que se adaptan a su estilo'
+    },
+    {
+        image: 'https://via.placeholder.com/1920x1080',
+        title: 'Servicio Profesional',
+        description: 'Más de una década de experiencia a su servicio'
     }
-    function updateHeroIndicators() {
-        heroIndicators.innerHTML = '';
-        heroSlides.forEach((slide, index) => {
-            const indicator = document.createElement('div');
-            indicator.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white', 'opacity-50', 'cursor-pointer');
-            if (index === currentHeroSlide) {
-                indicator.classList.remove('opacity-50');
-                indicator.classList.add('opacity-100');
-            }
-            indicator.addEventListener('click', () => {
-                currentHeroSlide = index;
-                showHeroSlide(currentHeroSlide);
-            });
-            heroIndicators.appendChild(indicator);
+];
+
+// Initialize hero slider
+let currentSlide = 0;
+const heroSlider = document.getElementById('heroSlider');
+const heroTitle = document.getElementById('heroTitle');
+const heroDescription = document.getElementById('heroDescription');
+const heroIndicators = document.getElementById('heroIndicators');
+
+function updateHeroSlider() {
+    heroSlider.style.backgroundImage = `url(${heroSlides[currentSlide].image})`;
+    heroTitle.textContent = heroSlides[currentSlide].title;
+    heroDescription.textContent = heroSlides[currentSlide].description;
+    updateHeroIndicators();
+}
+
+function updateHeroIndicators() {
+    heroIndicators.innerHTML = '';
+    heroSlides.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white', 'opacity-50', 'cursor-pointer');
+        if (index === currentSlide) {
+            indicator.classList.add('opacity-100');
+        }
+        indicator.addEventListener('click', () => {
+            currentSlide = index;
+            updateHeroSlider();
         });
-    }
-    function showNextHeroSlide() {
-        currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-        showHeroSlide(currentHeroSlide);
-    }
-    showHeroSlide(currentHeroSlide);
-    setInterval(showNextHeroSlide, 5000);
+        heroIndicators.appendChild(indicator);
+    });
+}
 
-    // Product slider
-    const productSlider = document.getElementById('productSlider');
-    const sliderLeft = document.getElementById('sliderLeft');
-    const sliderRight = document.getElementById('sliderRight');
-    const products = [
-        { name: 'Cerco Olímpico', image: 'https://via.placeholder.com/300x200', price: '$XXX', type: 'product' },
-        { name: 'Cerco Romboidal', image: 'https://via.placeholder.com/300x200', price: '$XXX', type: 'product' },
-        { name: 'Cerco Eléctrico', image: 'https://via.placeholder.com/300x200', price: '$XXX', type: 'product' },
-        { name: 'Cinta Cubre Cerco', image: 'https://via.placeholder.com/300x200', price: '$XXX', type: 'product' },
-        { name: 'Concertinas', image: 'https://via.placeholder.com/300x200', price: '$XXX', type: 'product' },
-        { name: 'Instalación', image: 'https://via.placeholder.com/300x200', price: 'Consultar', type: 'service' },
-        { name: 'Mantenimiento', image: 'https://via.placeholder.com/300x200', price: 'Consultar', type: 'service' }
-    ];
-    function createProductCard(product) {
-        const card = document.createElement('div');
-        card.className = 'flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden';
-        card.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="w-full h-40 object-cover">
-            <div class="p-4">
-                <h3 class="text-lg font-semibold mb-2">${product.name}</h3>
-                <p class="text-gray-600">${product.price}</p>
-                <button class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors add-to-cart" data-name="${product.name}" data-price="${product.price}">
-                    ${product.type === 'product' ? 'Agregar al carrito' : 'Solicitar'}
-                </button>
-            </div>
-        `;
-        return card;
-    }
+function nextHeroSlide() {
+    currentSlide = (currentSlide + 1) % heroSlides.length;
+    updateHeroSlider();
+}
+
+updateHeroSlider();
+setInterval(nextHeroSlide, 5000);
+
+// Initialize product slider
+const productSlider = document.getElementById('productSlider');
+const sliderLeft = document.getElementById('sliderLeft');
+const sliderRight = document.getElementById('sliderRight');
+
+function createProductCard(product) {
+    const template = document.getElementById('productCardTemplate');
+    const card = template.content.cloneNode(true);
+
+    card.querySelector('img').src = product.image;
+    card.querySelector('img').alt = product.name;
+    card.querySelector('h3').textContent = product.name;
+    card.querySelector('p').textContent = product.description;
+
+    const button = card.querySelector('button');
+    button.dataset.name = product.name;
+    button.dataset.type = product.type;
+
+    return card;
+}
+
+function populateProductSlider() {
+    productSlider.innerHTML = '';
     products.forEach(product => {
-        productSlider.appendChild(createProductCard(product));
+        const card = createProductCard(product);
+        productSlider.appendChild(card);
     });
-    sliderLeft.addEventListener('click', () => {
-        productSlider.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    sliderRight.addEventListener('click', () => {
-        productSlider.scrollBy({ left: 300, behavior: 'smooth' });
-    });
+}
 
-    // Product filter
-    const filterAll = document.getElementById('filterAll');
-    const filterProducts = document.getElementById('filterProducts');
-    const filterServices = document.getElementById('filterServices');
-    const productCards = productSlider.querySelectorAll('.flex-shrink-0');
-    function filterItems(type) {
-        productCards.forEach(card => {
-            if (type === 'all' || card.querySelector('button').dataset.name.toLowerCase().includes(type)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-    filterAll.addEventListener('click', () => filterItems('all'));
-    filterProducts.addEventListener('click', () => filterItems('product'));
-    filterServices.addEventListener('click', () => filterItems('service'));
+populateProductSlider();
 
-    // FAQ accordion
-    const faqButtons = document.querySelectorAll('#faq button');
-    faqButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            content.classList.toggle('hidden');
-            button.querySelector('svg').classList.toggle('rotate-180');
-        });
+sliderLeft.addEventListener('click', () => {
+    productSlider.scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+sliderRight.addEventListener('click', () => {
+    productSlider.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+// Product filtering
+const filterAll = document.getElementById('filterAll');
+const filterProducts = document.getElementById('filterProducts');
+const filterServices = document.getElementById('filterServices');
+
+filterAll.addEventListener('click', () => {
+    populateProductSlider();
+    updateFilterButtons(filterAll);
+});
+
+filterProducts.addEventListener('click', () => {
+    const filteredProducts = products.filter(product => product.type === 'product');
+    productSlider.innerHTML = '';
+    filteredProducts.forEach(product => {
+        const card = createProductCard(product);
+        productSlider.appendChild(card);
     });
+    updateFilterButtons(filterProducts);
+});
 
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function(e) {
+filterServices.addEventListener('click', () => {
+    const filteredServices = products.filter(product => product.type === 'service');
+    productSlider.innerHTML = '';
+    filteredServices.forEach(service => {
+        const card = createProductCard(service);
+        productSlider.appendChild(card);
+    });
+    updateFilterButtons(filterServices);
+});
+
+function updateFilterButtons(activeButton) {
+    [filterAll, filterProducts, filterServices].forEach(button => {
+        button.classList.remove('bg-gradient', 'text-white');
+        button.classList.add('bg-gray-200', 'text-gray-700');
+    });
+    activeButton.classList.remove('bg-gray-200', 'text-gray-700');
+    activeButton.classList.add('bg-gradient', 'text-white');
+}
+
+// FAQ accordion
+const faqButtons = document.querySelectorAll('#faq button');
+
+faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        content.classList.toggle('hidden');
+        const icon = button.querySelector('svg');
+        icon.classList.toggle('rotate-180');
+    });
+});
+
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        // Here you would typically send the form data to your server
-        alert('Gracias por su mensaje. Nos pondremos en contacto pronto.');
-        contactForm.reset();
-    });
-
-    // Floating cart functionality
-    const floatingCartButton = document.getElementById('floatingCartButton');
-    const floatingCart = document.getElementById('floatingCart');
-    const closeCart = document.getElementById('closeCart');
-    const cartItems = document.getElementById('cartItems');
-    const cartItemCount = document.getElementById('cartItemCount');
-    const requestQuote = document.getElementById('requestQuote');
-    let cart = [];
-
-    floatingCartButton.addEventListener('click', () => {
-        floatingCart.classList.toggle('translate-x-full');
-    });
-
-    closeCart.addEventListener('click', () => {
-        floatingCart.classList.add('translate-x-full');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('add-to-cart')) {
-            const name = e.target.dataset.name;
-            const price = e.target.dataset.price;
-            addToCart(name, price);
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
         }
     });
+});
 
-    function addToCart(name, price) {
-        const existingItem = cart.find(item => item.name === name);
-        if (existingItem) {
-            existingItem.quantity++;
+// Floating cart functionality
+const floatingCartButton = document.getElementById('floatingCartButton');
+const floatingCart = document.getElementById('floatingCart');
+const closeCart = document.getElementById('closeCart');
+const cartItems = document.getElementById('cartItems');
+const requestQuote = document.getElementById('requestQuote');
+
+floatingCartButton.addEventListener('click', () => {
+    floatingCart.classList.toggle('translate-x-full');
+});
+
+closeCart.addEventListener('click', () => {
+    floatingCart.classList.add('translate-x-full');
+});
+
+// Update cart functionality to handle information requests
+function addToCart(name, type) {
+    const item = document.createElement('div');
+    item.classList.add('flex', 'justify-between', 'items-center', 'mb-2');
+    item.innerHTML = `
+        <span>${name}</span>
+        <button class="text-red-500 hover:text-red-700">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+    cartItems.appendChild(item);
+
+    const removeButton = item.querySelector('button');
+    removeButton.addEventListener('click', () => {
+        cartItems.removeChild(item);
+    });
+}
+
+// Event delegation for add to cart buttons
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('add-to-cart')) {
+        const name = e.target.dataset.name;
+        const type = e.target.dataset.type;
+        addToCart(name, type);
+    }
+});
+
+requestQuote.addEventListener('click', () => {
+    const items = Array.from(cartItems.children).map(item => item.firstElementChild.textContent);
+    const message = `Me interesa obtener más información sobre los siguientes productos/servicios:\n\n${items.join('\n')}`;
+    window.open(`https://wa.me/543518047696?text=${encodeURIComponent(message)}`, '_blank');
+});
+
+// WhatsApp integration for contact form
+function sendToWhatsApp(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const whatsappNumber = '543518047696';
+    const whatsappMessage = `*Nuevo contacto desde web*%0A%0A*Nombre:* ${name}%0A*Email:* ${email}%0A*Mensaje:* ${message}`;
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+
+    // Reset form
+    event.target.reset();
+}
+
+// Top banner slider
+const bannerSlides = document.querySelectorAll('.banner-slide');
+let currentBannerSlide = 0;
+
+function showBannerSlide(index) {
+    bannerSlides.forEach((slide, i) => {
+        if (i === index) {
+            slide.classList.add('active');
+            slide.style.display = 'flex';
         } else {
-            cart.push({ name, price, quantity: 1 });
+            slide.classList.remove('active');
+            slide.style.display = 'none';
         }
-        updateCart();
-    }
-
-    function updateCart() {
-        cartItems.innerHTML = '';
-        let total = 0;
-        cart.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'flex justify-between items-center mb-2';
-            itemElement.innerHTML = `
-                <span>${item.name} x${item.quantity}</span>
-                <span>${item.price}</span>
-            `;
-            cartItems.appendChild(itemElement);
-            if (item.price !== 'Consultar') {
-                total += parseFloat(item.price.replace('$', '')) * item.quantity;
-            }
-        });
-        const totalElement = document.createElement('div');
-        totalElement.className = 'font-bold mt-4';
-        totalElement.textContent = `Total: $${total.toFixed(2)}`;
-        cartItems.appendChild(totalElement);
-        cartItemCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-    }
-
-    requestQuote.addEventListener('click', () => {
-        // Here you would typically send the cart data to your server or open a quote form
-        alert('Gracias por su interés. Nos pondremos en contacto para proporcionarle un presupuesto detallado.');
-        cart = [];
-        updateCart();
-        floatingCart.classList.add('translate-x-full');
     });
+}
+
+function nextBannerSlide() {
+    currentBannerSlide = (currentBannerSlide + 1) % bannerSlides.length;
+    showBannerSlide(currentBannerSlide);
+}
+
+showBannerSlide(currentBannerSlide);
+setInterval(nextBannerSlide, 5000);
+
+// Sticky header
+const header = document.getElementById('header');
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+        header.style.top = '-100px';
+    } else {
+        header.style.top = '40px';
+    }
+    lastScrollTop = scrollTop;
+});
+
+// Preloader
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    preloader.classList.add('fade-out');
+    setTimeout(() => {
+        preloader.style.display = 'none';
+    }, 1000);
 });

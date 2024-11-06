@@ -80,7 +80,7 @@ const products = [
 // Hero slider data
 const heroSlides = [
     {
-        image: 'https://via.placeholder.com/1920x1080',
+        image: 'img/hero.png',
         title: 'Expertos en Cercos Perimetrales',
         description: 'Protegemos su propiedad con soluciones de alta calidad'
     },

@@ -26,32 +26,54 @@
         :root {
             --primary-color: #E31E24;
             --secondary-color: #58595B;
-            --grafiant-blue: #0000FF;
-            --grafiant-green: #00FF00;
-            --grafiant-red: #FF0000;
+            --accent-color: #F3F4F6;
         }
         body {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0h100v100H0z' fill='%23f3f4f6'/%3E%3Cpath d='M10 0v100M20 0v100M30 0v100M40 0v100M50 0v100M60 0v100M70 0v100M80 0v100M90 0v100' stroke='%23e5e7eb' stroke-width='0.5'/%3E%3Cpath d='M0 10h100M0 20h100M0 30h100M0 40h100M0 50h100M0 60h100M0 70h100M0 80h100M0 90h100' stroke='%23e5e7eb' stroke-width='0.5'/%3E%3C/svg%3E");
         }
-        .bg-red-600 { background-color: var(--grafiant-red); }
-        .text-red-600 { color: var(--grafiant-red); }
-        .hover\:bg-red-700:hover { background-color: var(--grafiant-blue); }
-        .hover\:text-red-600:hover { color: var(--grafiant-red); }
+        .bg-gradient {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+        .text-gradient {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #header {
+            position: sticky;
+            top: 40px;
+            z-index: 20;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        #topBanner {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 30;
+        }
+        .banner-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+        }
         .preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #fff;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
         }
         .preloader-logo {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             animation: pulse 1.5s infinite;
         }
         @keyframes pulse {
@@ -68,70 +90,12 @@
                 box-shadow: 0 0 0 0 rgba(227, 30, 36, 0);
             }
         }
-        .hero-slide, .banner-slide {
-            transition: opacity 0.5s ease-in-out;
-        }
-        .banner-slide {
-            display: none;
-        }
-        .banner-slide.active {
-            display: flex;
-        }
-        .product-slider {
-            scroll-behavior: smooth;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .spin {
-            animation: spin 2s linear infinite;
-        }
-        .float-button {
-            transition: all 0.3s ease;
-        }
-        .float-button:hover {
-            transform: scale(1.1);
-        }
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        .social-icon:hover {
-            transform: translateY(-3px);
-        }
-        .hero-image {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        @media (min-width: 640px) {
-            .hero-image {
-                background-attachment: fixed;
-            }
-        }
-        .header-icon, .footer-icon {
-            font-size: 1.5rem;
-        }
         #floatingCartButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--grafiant-blue);
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
+            bottom: 100px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
         }
         #floatingCartButton:hover {
-            transform: scale(1.1);
-            background-color: var(--grafiant-green);
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
         }
     </style>
 </head>
@@ -142,38 +106,38 @@
     </div>
 
     <!-- Top Banner -->
-    <div id="topBanner" class="bg-red-600 text-white py-2 px-4">
+    <div id="topBanner" class="text-white py-2 px-4">
         <div class="banner-slide active">
             <p class="text-sm font-semibold flex-grow">¡Oferta especial! 15% de descuento en todos los cercos este mes.</p>
-            <button class="bg-white text-red-600 px-4 py-1 rounded text-sm ml-4">Ver oferta</button>
+            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4">Ver oferta</button>
         </div>
         <div class="banner-slide">
             <p class="text-sm font-semibold flex-grow">Nuevo servicio de instalación express. ¡Contáctanos ahora!</p>
-            <button class="bg-white text-red-600 px-4 py-1 rounded text-sm ml-4">Contactar</button>
+            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4">Contactar</button>
         </div>
         <div class="banner-slide">
             <p class="text-sm font-semibold flex-grow">Garantía de satisfacción del 100% en todos nuestros productos.</p>
-            <button class="bg-white text-red-600 px-4 py-1 rounded text-sm ml-4">Saber más</button>
+            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4">Saber más</button>
         </div>
     </div>
 
     <!-- Header -->
-    <header id="header" class="fixed w-full z-20 transition-all duration-300">
+    <header id="header" class="w-full transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20PLF-01%20(1)-B3ZS8DiG9fUYnClxQeSwkiStl295jj.png" alt="Perimetrales Las Flores Logo" class="h-12 mr-2">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20PLF-01%20(1)-B3ZS8DiG9fUYnClxQeSwkiStl295jj.png" alt="Perimetrales Las Flores Logo" class="h-16 mr-2">
             </div>
             <nav class="hidden md:flex space-x-4">
-                <a href="#about" class="hover:text-red-600 transition-colors">Sobre Nosotros</a>
-                <a href="#services" class="hover:text-red-600 transition-colors">Servicios</a>
-                <a href="#products" class="hover:text-red-600 transition-colors">Productos</a>
-                <a href="#faq" class="hover:text-red-600 transition-colors">FAQ</a>
-                <a href="#contact" class="hover:text-red-600 transition-colors">Contacto</a>
+                <a href="#about" class="hover:text-primary transition-colors">Sobre Nosotros</a>
+                <a href="#services" class="hover:text-primary transition-colors">Servicios</a>
+                <a href="#products" class="hover:text-primary transition-colors">Productos</a>
+                <a href="#faq" class="hover:text-primary transition-colors">FAQ</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contacto</a>
             </nav>
             <div class="hidden md:flex space-x-4">
-                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-facebook-f header-icon"></i></a>
-                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-twitter header-icon"></i></a>
-                <a href="#" class="social-icon text-gray-600 hover:text-red-600"><i class="fab fa-instagram header-icon"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-facebook-f header-icon"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-twitter header-icon"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-instagram header-icon"></i></a>
             </div>
             <button id="menuToggle" class="md:hidden">
                 <i class="fas fa-bars"></i>
@@ -181,11 +145,11 @@
         </div>
         <div id="mobileMenu" class="hidden md:hidden bg-white shadow-md">
             <nav class="flex flex-col items-center py-4">
-                <a href="#about" class="py-2 hover:text-red-600 transition-colors">Sobre Nosotros</a>
-                <a href="#services" class="py-2 hover:text-red-600 transition-colors">Servicios</a>
-                <a href="#products" class="py-2 hover:text-red-600 transition-colors">Productos</a>
-                <a href="#faq" class="py-2 hover:text-red-600 transition-colors">FAQ</a>
-                <a href="#contact" class="py-2 hover:text-red-600 transition-colors">Contacto</a>
+                <a href="#about" class="py-2 hover:text-primary transition-colors">Sobre Nosotros</a>
+                <a href="#services" class="py-2 hover:text-primary transition-colors">Servicios</a>
+                <a href="#products" class="py-2 hover:text-primary transition-colors">Productos</a>
+                <a href="#faq" class="py-2 hover:text-primary transition-colors">FAQ</a>
+                <a href="#contact" class="py-2 hover:text-primary transition-colors">Contacto</a>
             </nav>
         </div>
     </header>
@@ -209,7 +173,7 @@
         <!-- About Section -->
         <section id="about" class="py-16 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Sobre Nosotros</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center text-gradient">Sobre Nosotros</h2>
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     <div class="md:w-1/2 mb-8 md:mb-0">
                         <img src="https://via.placeholder.com/400x300" alt="Equipo de trabajo" class="rounded-lg shadow-md">
@@ -229,20 +193,20 @@
         <!-- Services Section -->
         <section id="services" class="py-16 bg-gray-100" data-aos="fade-up">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Nuestros Servicios</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center text-gradient">Nuestros Servicios</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <i class="fas fa-fence text-4xl text-red-600 mb-4"></i>
+                        <i class="fas fa-fence text-4xl text-primary mb-4"></i>
                         <h3 class="text-xl font-semibold mb-4">Instalación de Cercos</h3>
                         <p>Instalamos cercos perimetrales de alta calidad para proteger su propiedad.</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <i class="fas fa-store text-4xl text-red-600 mb-4"></i>
+                        <i class="fas fa-store text-4xl text-primary mb-4"></i>
                         <h3 class="text-xl font-semibold mb-4">Venta de Materiales</h3>
                         <p>Ofrecemos una amplia gama de materiales para proyectos de cercado.</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <i class="fas fa-tools text-4xl text-red-600 mb-4"></i>
+                        <i class="fas fa-tools text-4xl text-primary mb-4"></i>
                         <h3 class="text-xl font-semibold mb-4">Mantenimiento</h3>
                         <p>Servicios de mantenimiento y reparación para mantener sus cercos en óptimas condiciones.</p>
                     </div>
@@ -253,9 +217,9 @@
         <!-- Products Section -->
         <section id="products" class="py-16 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Productos y Servicios</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center text-gradient">Productos y Servicios</h2>
                 <div class="flex justify-center mb-8">
-                    <button id="filterAll" class="px-4 py-2 rounded-l-lg bg-red-600 text-white">Todos</button>
+                    <button id="filterAll" class="px-4 py-2 rounded-l-lg bg-gradient text-white">Todos</button>
                     <button id="filterProducts" class="px-4 py-2 bg-gray-200">Productos</button>
                     <button id="filterServices" class="px-4 py-2 rounded-r-lg bg-gray-200">Servicios</button>
                 </div>
@@ -276,7 +240,7 @@
         <!-- FAQ Section -->
         <section id="faq" class="py-16 bg-gray-100" data-aos="fade-up">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Preguntas Frecuentes</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center text-gradient">Preguntas Frecuentes</h2>
                 <div class="space-y-4">
                     <div class="bg-white rounded-lg shadow-md">
                         <button class="flex items-center justify-between w-full p-4 focus:outline-none">
@@ -310,52 +274,52 @@
         </section>
 
         <!-- Banner Section -->
-        <section class="bg-red-600 text-white py-12" data-aos="fade-up">
+        <section class="bg-gradient text-white py-12" data-aos="fade-up">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl font-bold mb-4">¡Oferta Especial!</h2>
                 <p class="text-xl mb-8">Obtenga un 10% de descuento en su próxima instalación de cerco. ¡Contáctenos hoy mismo!</p>
-                <a href="#contact" class="bg-white text-red-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">Contactar Ahora</a>
+                <a href="#contact" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">Contactar Ahora</a>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="py-16 bg-white" data-aos="fade-up">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Contacto</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center text-gradient">Contacto</h2>
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="md:w-1/2 mb-8 md:mb-0">
-                        <form id="contactForm" class="space-y-4">
+                        <form id="contactForm" class="space-y-4" onsubmit="sendToWhatsApp(event)">
                             <input type="text" id="name" placeholder="Nombre" class="w-full p-2 border border-gray-300 rounded" required>
                             <input type="email" id="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded" required>
                             <textarea id="message" placeholder="Mensaje" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
-                            <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition-colors">Enviar</button>
+                            <button type="submit" class="bg-gradient text-white px-6 py-2 rounded hover:opacity-90 transition-opacity">Enviar por WhatsApp</button>
                         </form>
                     </div>
                     <div class="md:w-1/2 md:pl-8 text-center md:text-left">
                         <div class="space-y-4">
                             <div class="flex items-center justify-center md:justify-start">
-                                <i class="fas fa-map-marker-alt text-red-600 mr-2"></i>
+                                <i class="fas fa-map-marker-alt text-primary mr-2"></i>
                                 <span>Av. Armada Argentina 188, Córdoba</span>
                             </div>
                             <div class="flex items-center justify-center md:justify-start">
-                                <i class="fas fa-map-marker-alt text-red-600 mr-2"></i>
+                                <i class="fas fa-map-marker-alt text-primary mr-2"></i>
                                 <span>Sucursal: Alta Gracia, Av. Hipólito Yrigoyen 1220</span>
                             </div>
                             <div class="flex items-center justify-center md:justify-start">
-                                <i class="fas fa-phone text-red-600 mr-2"></i>
+                                <i class="fas fa-phone text-primary mr-2"></i>
                                 <span>Tel fijo: 877009</span>
                             </div>
                             <div class="flex items-center justify-center md:justify-start">
-                                <i class="fab fa-whatsapp text-red-600 mr-2"></i>
+                                <i class="fab fa-whatsapp text-primary mr-2"></i>
                                 <span>WhatsApp: 351 155382361 / 351 158047696</span>
                             </div>
                             <div class="flex items-center justify-center md:justify-start">
-                                <i class="fas fa-clock text-red-600 mr-2"></i>
+                                <i class="fas fa-clock text-primary mr-2"></i>
                                 <span>Lunes a Viernes: 9:00 AM - 6:00 PM</span>
                             </div>
                             <div class="flex items-center justify-center md:justify-start">
-                                <i class="fab fa-instagram text-red-600 mr-2"></i>
-                                <a href="https://www.instagram.com/perimetraleslasflorescba" target="_blank" rel="noopener noreferrer" class="hover:text-red-600 transition-colors">@perimetraleslasflorescba</a>
+                                <i class="fab fa-instagram text-primary mr-2"></i>
+                                <a href="https://www.instagram.com/perimetraleslasflorescba" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">@perimetraleslasflorescba</a>
                             </div>
                         </div>
                     </div>
@@ -367,29 +331,29 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-gradient text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="mb-6 md:mb-0">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20PLF-01%20(1)-B3ZS8DiG9fUYnClxQeSwkiStl295jj.png" alt="Perimetrales Las Flores Logo" class="h-12 mb-4">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20PLF-01%20(1)-B3ZS8DiG9fUYnClxQeSwkiStl295jj.png" alt="Perimetrales Las Flores Logo" class="h-20 mb-4">
                     <p class="text-sm">Expertos en cercos perimetrales y soluciones de seguridad desde hace más de una década.</p>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4 text-lg">Productos</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-red-600 transition-colors">Cinta cubre cerco</a></li>
-                        <li><a href="#" class="hover:text-red-600 transition-colors">Concertinas</a></li>
-                        <li><a href="#" class="hover:text-red-600 transition-colors">Mallas electrosoldadas</a></li>
-                        <li><a href="#" class="hover:text-red-600 transition-colors">Pinches de seguridad</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Cinta cubre cerco</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Concertinas</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Mallas electrosoldadas</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Pinches de seguridad</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold mb-4 text-lg">Enlaces Rápidos</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#about" class="hover:text-red-600 transition-colors">Sobre Nosotros</a></li>
-                        <li><a href="#services" class="hover:text-red-600 transition-colors">Servicios</a></li>
-                        <li><a href="#products" class="hover:text-red-600 transition-colors">Productos</a></li>
-                        <li><a href="#contact" class="hover:text-red-600 transition-colors">Contacto</a></li>
+                        <li><a href="#about" class="hover:text-accent transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#services" class="hover:text-accent transition-colors">Servicios</a></li>
+                        <li><a href="#products" class="hover:text-accent transition-colors">Productos</a></li>
+                        <li><a href="#contact" class="hover:text-accent transition-colors">Contacto</a></li>
                     </ul>
                 </div>
                 <div>
@@ -401,16 +365,16 @@
                         <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="127b7c747d526277607b7f776660737e77617e7361747e7d6077617170733c717d7f">[email&#160;protected]</a></li>
                     </ul>
                     <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-facebook-f footer-icon"></i></a>
-                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-twitter footer-icon"></i></a>
-                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-instagram footer-icon"></i></a>
-                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-linkedin-in footer-icon"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-facebook-f footer-icon"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-twitter footer-icon"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-instagram footer-icon"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-linkedin-in footer-icon"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+            <div class="mt-8 pt-8 border-t border-white border-opacity-20 text-center text-sm">
                 <p>&copy; 2024 Perimetrales Las Flores. Todos los derechos reservados.</p>
-                <a href="https://dualitydomain.com" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block hover:text-red-600 transition-colors">
+                <a href="https://dualitydomain.com" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block hover:text-accent transition-colors">
                     Powered by Duality Domain
                 </a>
             </div>
@@ -422,29 +386,42 @@
         <div class="p-4">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold">Su Carrito</h3>
-                <button id="closeCart" class="text-gray-500 hover:text-red-600">
+                <button id="closeCart" class="text-gray-500 hover:text-primary">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div id="cartItems">
                 <!-- Cart items will be dynamically added here -->
             </div>
-            <button id="requestQuote" class="w-full bg-red-600 text-white px-4 py-2 rounded mt-4 hover:bg-red-700 transition-colors">
+            <button id="requestQuote" class="w-full bg-gradient text-white px-4 py-2 rounded mt-4 hover:opacity-90 transition-opacity">
                 Solicitar Presupuesto
             </button>
         </div>
     </div>
 
     <!-- Floating Cart Button -->
-    <button id="floatingCartButton" class="fixed bottom-20 right-4 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-colors z-50">
+    <button id="floatingCartButton" class="fixed right-4 bottom-4 bg-gradient text-white p-4 rounded-full shadow-lg z-40 hover:opacity-90 transition-opacity">
         <i class="fas fa-shopping-cart"></i>
-        <span id="cartItemCount" class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">0</span>
     </button>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/543518047696" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-colors z-50">
-        <i class="fab fa-whatsapp text-2xl"></i>
+    <a href="https://wa.me/543518047696" target="_blank" rel="noopener noreferrer" class="fixed left-4 bottom-4 bg-green-500 text-white p-4 rounded-full shadow-lg z-40 hover:bg-green-600 transition-colors">
+        <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Product Card Template -->
+    <template id="productCardTemplate">
+        <div class="flex-shrink-0 w-64 bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="" alt="" class="w-full h-40 object-cover">
+            <div class="p-4">
+                <h3 class="text-lg font-semibold mb-2"></h3>
+                <p class="text-gray-600 mb-4 h-24 overflow-y-auto"></p>
+                <button class="mt-4 bg-gradient text-white px-4 py-2 rounded hover:opacity-90 transition-opacity add-to-cart">
+                    Solicitar Información
+                </button>
+            </div>
+        </div>
+    </template>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

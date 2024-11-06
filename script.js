@@ -11,49 +11,49 @@ const products = [
     },
     {
         name: 'Concertinas',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/concertinas.png',
         description: 'Alambre de seguridad en espiral, ideal para reforzar la protección en la parte superior de cercos y muros.',
         type: 'product'
     },
     {
         name: 'Mallas electrosoldadas',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/mallas',
         description: 'Mallas resistentes y duraderas, perfectas para cercos de seguridad en áreas industriales y residenciales.',
         type: 'product'
     },
     {
         name: 'Pinches de seguridad',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/pinches.png',
         description: 'Elementos disuasorios para la parte superior de muros y cercos, aumentando la seguridad perimetral.',
         type: 'product'
     },
     {
         name: 'Puertas y portones a medida',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/portones.png',
         description: 'Soluciones personalizadas para accesos seguros y estéticos, adaptadas a sus necesidades específicas.',
         type: 'product'
     },
     {
         name: 'Tejidos romboidales',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/romboidal.png',
         description: 'Malla versátil y económica, ideal para cercos residenciales y deportivos.',
         type: 'product'
     },
     {
         name: 'Tejido exagonal',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/exagonal.png',
         description: 'Malla de diseño hexagonal, perfecta para cercos de jardín y contención de animales.',
         type: 'product'
     },
     {
         name: 'Tela mosquitera',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/mosquitero.png',
         description: 'Malla fina para protección contra insectos, ideal para ventanas y puertas.',
         type: 'product'
     },
     {
         name: 'Tela para cercos',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/tela.png',
         description: 'Tela resistente y duradera para cercos temporales o permanentes en construcciones y eventos.',
         type: 'product'
     },
@@ -85,12 +85,12 @@ const heroSlides = [
         description: 'Protegemos su propiedad con soluciones de alta calidad'
     },
     {
-        image: 'https://via.placeholder.com/1920x1080',
+        image: 'img/hero1.png',
         title: 'Seguridad y Estética',
         description: 'Diseños personalizados que se adaptan a su estilo'
     },
     {
-        image: 'https://via.placeholder.com/1920x1080',
+        image: 'img/hero2.png',
         title: 'Servicio Profesional',
         description: 'Más de una década de experiencia a su servicio'
     }

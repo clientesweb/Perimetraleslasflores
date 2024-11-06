@@ -260,35 +260,51 @@ closeCart.addEventListener('click', () => {
     floatingCart.classList.add('translate-x-full');
 });
 
-// Update cart functionality to handle information requests
-function addToCart(name, type) {
-    const item = document.createElement('div');
-    item.classList.add('flex', 'justify-between', 'items-center', 'mb-2');
-    item.innerHTML = `
-        <span>${name}</span>
-        <button class="text-red-500 hover:text-red-700">
-            <i class="fas fa-trash"></i>
-        </button>
-    `;
-    cartItems.appendChild(item);
+// Update cart functionality to handle information requests and quantities
+function addToCart(name, type, quantity) {
+    const existingItem = Array.from(cartItems.children).find(item => item.dataset.name === name);
 
-    const removeButton = item.querySelector('button');
-    removeButton.addEventListener('click', () => {
-        cartItems.removeChild(item);
-    });
+    if (existingItem) {
+        const quantitySpan = existingItem.querySelector('.item-quantity');
+        const currentQuantity = parseInt(quantitySpan.textContent);
+        quantitySpan.textContent = currentQuantity + quantity;
+    } else {
+        const item = document.createElement('div');
+        item.classList.add('flex', 'justify-between', 'items-center', 'mb-2');
+        item.dataset.name = name;
+        item.innerHTML = `
+            <span>${name} <span class="item-quantity">${quantity}</span></span>
+            <button class="text-red-500 hover:text-red-700">
+                <i class="fas fa-trash"></i>
+            </button>
+        `;
+        cartItems.appendChild(item);
+
+        const removeButton = item.querySelector('button');
+        removeButton.addEventListener('click', () => {
+            cartItems.removeChild(item);
+        });
+    }
 }
 
 // Event delegation for add to cart buttons
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('add-to-cart')) {
-        const name = e.target.dataset.name;
+        const card = e.target.closest('.flex-shrink-0');
+        const name = card.querySelector('h3').textContent;
         const type = e.target.dataset.type;
-        addToCart(name, type);
+        const quantityInput = card.querySelector('.product-quantity');
+        const quantity = parseInt(quantityInput.value);
+        addToCart(name, type, quantity);
     }
 });
 
 requestQuote.addEventListener('click', () => {
-    const items = Array.from(cartItems.children).map(item => item.firstElementChild.textContent);
+    const items = Array.from(cartItems.children).map(item => {
+        const name = item.firstElementChild.textContent.split(' ')[0];
+        const quantity = item.querySelector('.item-quantity').textContent;
+        return `${name} (${quantity})`;
+    });
     const message = `Me interesa obtener más información sobre los siguientes productos/servicios:\n\n${items.join('\n')}`;
     window.open(`https://wa.me/543518047696?text=${encodeURIComponent(message)}`, '_blank');
 });
@@ -341,7 +357,7 @@ let lastScrollTop = 0;
 window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop) {
-        header.style.top = '-100px';
+        header.style.top = '0';
     } else {
         header.style.top = '40px';
     }

@@ -8,7 +8,11 @@
     <meta name="keywords" content="cercos perimetrales, seguridad, Córdoba, instalación de cercos, mantenimiento de cercos">
     <link rel="canonical" href="https://www.perimetraleslasflorescba.com">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#E31E24">
     <meta property="og:title" content="Perimetrales Las Flores - Expertos en Cercos Perimetrales">
     <meta property="og:description" content="Instalación y mantenimiento de cercos perimetrales de alta calidad en Córdoba. Más de 10 años de experiencia.">
     <meta property="og:image" content="https://www.perimetraleslasflorescba.com/og-image.jpg">
@@ -19,8 +23,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        .hero-slide {
+        :root {
+            --primary-color: #E31E24;
+            --secondary-color: #58595B;
+        }
+        body {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0h100v100H0z' fill='%23f3f4f6'/%3E%3Cpath d='M10 0v100M20 0v100M30 0v100M40 0v100M50 0v100M60 0v100M70 0v100M80 0v100M90 0v100' stroke='%23e5e7eb' stroke-width='0.5'/%3E%3Cpath d='M0 10h100M0 20h100M0 30h100M0 40h100M0 50h100M0 60h100M0 70h100M0 80h100M0 90h100' stroke='%23e5e7eb' stroke-width='0.5'/%3E%3C/svg%3E");
+        }
+        .bg-red-600 { background-color: var(--primary-color); }
+        .text-red-600 { color: var(--primary-color); }
+        .hover\:bg-red-700:hover { background-color: #C71A1F; }
+        .hover\:text-red-600:hover { color: var(--primary-color); }
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .preloader-logo {
+            width: 100px;
+            height: 100px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(227, 30, 36, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(227, 30, 36, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(227, 30, 36, 0);
+            }
+        }
+        .hero-slide, .banner-slide {
             transition: opacity 0.5s ease-in-out;
+        }
+        .banner-slide {
+            display: none;
+        }
+        .banner-slide.active {
+            display: flex;
         }
         .product-slider {
             scroll-behavior: smooth;
@@ -57,19 +109,32 @@
     </style>
 </head>
 <body class="min-h-screen bg-white text-gray-900 relative">
+    <!-- Preloader -->
+    <div class="preloader">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20PLF-01%20(1)-B3ZS8DiG9fUYnClxQeSwkiStl295jj.png" alt="Perimetrales Las Flores Logo" class="preloader-logo">
+    </div>
+
     <!-- Top Banner -->
-    <div class="bg-red-600 text-white py-2 px-4 text-center">
-        <p class="text-sm font-semibold">¡Oferta especial! 15% de descuento en todos los cercos este mes.</p>
+    <div id="topBanner" class="bg-red-600 text-white py-2 px-4">
+        <div class="banner-slide active">
+            <p class="text-sm font-semibold flex-grow">¡Oferta especial! 15% de descuento en todos los cercos este mes.</p>
+            <button class="bg-white text-red-600 px-4 py-1 rounded text-sm ml-4">Ver oferta</button>
+        </div>
+        <div class="banner-slide">
+            <p class="text-sm font-semibold flex-grow">Nuevo servicio de instalación express. ¡Contáctanos ahora!</p>
+            <button class="bg-white text-red-600 px-4 py-1 rounded text-sm ml-4">Contactar</button>
+        </div>
+        <div class="banner-slide">
+            <p class="text-sm font-semibold flex-grow">Garantía de satisfacción del 100% en todos nuestros productos.</p>
+            <button class="bg-white text-red-600 px-4 py-1 rounded text-sm ml-4">Saber más</button>
+        </div>
     </div>
 
     <!-- Header -->
     <header id="header" class="fixed w-full z-20 transition-all duration-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center">
-                <div class="w-12 h-12 bg-red-600 flex items-center justify-center rounded-full mr-2 spin">
-                    <span class="text-white font-bold">PLF</span>
-                </div>
-                <span class="text-xl font-bold">Perimetrales Las Flores</span>
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20PLF-01%20(1)-B3ZS8DiG9fUYnClxQeSwkiStl295jj.png" alt="Perimetrales Las Flores Logo" class="h-12 mr-2">
             </div>
             <nav class="hidden md:flex space-x-4">
                 <a href="#about" class="hover:text-red-600 transition-colors">Sobre Nosotros</a>
@@ -186,44 +251,31 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center">Preguntas Frecuentes</h2>
                 <div class="space-y-4">
-                    <div class="border-b border-gray-200 pb-4">
-                        <button class="flex items-center justify-between w-full">
-                            <span class="text-lg font-medium text-gray-900">¿Cuánto tiempo toma instalar un cerco perimetral?</span>
-                            <span class="ml-6 h-7 flex items-center">
-                                <svg class="rotate-0 h-6 w-6 transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="flex items-center justify-between w-full p-4 focus:outline-none">
+                            <span class="text-lg font-medium text-gray-900">¿Qué tipos de cercos ofrecen?</span>
+                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div class="mt-2 pr-12">
-                            <p class="text-base text-gray-500">El tiempo de instalación varía según el tamaño y complejidad del proyecto. En general, un cerco residencial estándar puede tomar de 1 a 3 días, mientras que proyectos más grandes pueden llevar una semana o más.</p>
+                        <div class="hidden p-4 bg-gray-50">
+                            <p class="text-gray-700">Ofrecemos una amplia variedad de cercos, incluyendo cercos olímpicos, romboidales, eléctricos, y más. También proporcionamos opciones como cinta cubre cerco, concertinas, y mallas electrosoldadas para adaptarnos a sus necesidades específicas de seguridad y privacidad.</p>
                         </div>
                     </div>
-                    <div class="border-b border-gray-200 pb-4">
-                        <button class="flex items-center justify-between w-full">
-                            <span class="text-lg font-medium text-gray-900">¿Ofrecen garantía en sus productos y servicios?</span>
-                            <span class="ml-6 h-7 flex items-center">
-                                <svg class="rotate-0 h-6 w-6 transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="flex items-center justify-between w-full p-4 focus:outline-none">
+                            <span class="text-lg font-medium text-gray-900">¿Realizan instalaciones en toda la provincia de Córdoba?</span>
+                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div class="mt-2 pr-12">
-                            <p class="text-base text-gray-500">Sí, ofrecemos garantía tanto en nuestros productos como en nuestros servicios de instalación. La duración de la garantía depende del tipo de producto y servicio, pero generalmente cubre defectos de fabricación y mano de obra.</p>
-                        
+                        <div class="hidden p-4 bg-gray-50">
+                            <p class="text-gray-700">Sí, nuestro equipo de profesionales realiza instalaciones en toda la provincia de Córdoba. Contamos con una casa central en Córdoba capital y una sucursal en Alta Gracia para brindar un servicio más eficiente en toda la región.</p>
                         </div>
                     </div>
-                    <div class="border-b border-gray-200 pb-4">
-                        <button class="flex items-center justify-between w-full">
-                            <span class="text-lg font-medium text-gray-900">¿Realizan mantenimiento de cercos existentes?</span>
-                            <span class="ml-6 h-7 flex items-center">
-                                <svg class="rotate-0 h-6 w-6 transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </span>
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="flex items-center justify-between w-full p-4 focus:outline-none">
+                            <span class="text-lg font-medium text-gray-900">¿Ofrecen servicios de mantenimiento para cercos existentes?</span>
+                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div class="mt-2 pr-12">
-                            <p class="text-base text-gray-500">Sí, ofrecemos servicios de mantenimiento y reparación para cercos existentes, independientemente de si fueron instalados por nosotros o por otra empresa. Nuestro equipo puede evaluar el estado de su cerco y recomendar las mejores opciones de mantenimiento o reparación.</p>
+                        <div class="hidden p-4 bg-gray-50">
+                            <p class="text-gray-700">Sí, además de la instalación de nuevos cercos, ofrecemos servicios de mantenimiento y reparación para cercos existentes. Nuestro equipo puede evaluar el estado de su cerco y recomendar las mejores opciones para mantenerlo en óptimas condiciones.</p>
                         </div>
                     </div>
                 </div>
@@ -246,25 +298,29 @@
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="md:w-1/2 mb-8 md:mb-0">
                         <form id="contactForm" class="space-y-4">
-                            <input type="text" placeholder="Nombre" class="w-full p-2 border border-gray-300 rounded" required>
-                            <input type="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded" required>
-                            <textarea placeholder="Mensaje" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
+                            <input type="text" id="name" placeholder="Nombre" class="w-full p-2 border border-gray-300 rounded" required>
+                            <input type="email" id="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded" required>
+                            <textarea id="message" placeholder="Mensaje" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
                             <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition-colors">Enviar</button>
                         </form>
                     </div>
                     <div class="md:w-1/2 md:pl-8 text-center md:text-left">
                         <div class="space-y-4">
                             <div class="flex items-center justify-center md:justify-start">
-                                <i class="fas fa-phone text-red-600 mr-2"></i>
-                                <span>+54 9 11 1234-5678</span>
-                            </div>
-                            <div class="flex items-center justify-center md:justify-start">
-                                <i class="fas fa-envelope text-red-600 mr-2"></i>
-                                <span>info@perimetraleslasflorescba.com</span>
+                                <i class="fas fa-map-marker-alt text-red-600 mr-2"></i>
+                                <span>Av. Armada Argentina 188, Córdoba</span>
                             </div>
                             <div class="flex items-center justify-center md:justify-start">
                                 <i class="fas fa-map-marker-alt text-red-600 mr-2"></i>
-                                <span>Av. Fuerza Aerea 2883 (Ruta 20), Córdoba, Argentina 5000</span>
+                                <span>Sucursal: Alta Gracia, Av. Hipólito Yrigoyen 1220</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start">
+                                <i class="fas fa-phone text-red-600 mr-2"></i>
+                                <span>Tel fijo: 877009</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start">
+                                <i class="fab fa-whatsapp text-red-600 mr-2"></i>
+                                <span>WhatsApp: 351 155382361 / 351 158047696</span>
                             </div>
                             <div class="flex items-center justify-center md:justify-start">
                                 <i class="fas fa-clock text-red-600 mr-2"></i>
@@ -278,7 +334,7 @@
                     </div>
                 </div>
                 <div class="mt-8">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.5751016040207!2d-64.2358358!3d-31.4013871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432985f478f5b69%3A0xb0a24f9a5366b092!2sAv.%20Fuerza%20A%C3%A9rea%20Argentina%202883%2C%20X5010KMG%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1653416314071!5m2!1ses-419!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.5751016040207!2d-64.2358358!3d-31.4013871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432985f478f5b69%3A0xb0a24f9a5366b092!2sAv.%20Armada%20Argentina%20188%2C%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1653416314071!5m2!1ses-419!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
@@ -286,34 +342,48 @@
 
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="mb-6 md:mb-0">
-                    <img src="/logo.png" alt="Perimetrales Las Flores Logo" class="h-12 mb-2">
-                    <p>&copy; 2024 Perimetrales Las Flores. Todos los derechos reservados.</p>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20PLF-01%20(1)-B3ZS8DiG9fUYnClxQeSwkiStl295jj.png" alt="Perimetrales Las Flores Logo" class="h-12 mb-4">
+                    <p class="text-sm">Expertos en cercos perimetrales y soluciones de seguridad desde hace más de una década.</p>
                 </div>
-                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-                    <div>
-                        <h4 class="font-bold mb-2">Enlaces Rápidos</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#about" class="hover:text-red-600 transition-colors">Sobre Nosotros</a></li>
-                            <li><a href="#services" class="hover:text-red-600 transition-colors">Servicios</a></li>
-                            <li><a href="#products" class="hover:text-red-600 transition-colors">Productos</a></li>
-                            <li><a href="#contact" class="hover:text-red-600 transition-colors">Contacto</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-bold mb-2">Síguenos</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="hover:text-red-600 transition-colors"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="hover:text-red-600 transition-colors"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="hover:text-red-600 transition-colors"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="hover:text-red-600 transition-colors"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Productos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-red-600 transition-colors">Cinta cubre cerco</a></li>
+                        <li><a href="#" class="hover:text-red-600 transition-colors">Concertinas</a></li>
+                        <li><a href="#" class="hover:text-red-600 transition-colors">Mallas electrosoldadas</a></li>
+                        <li><a href="#" class="hover:text-red-600 transition-colors">Pinches de seguridad</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-red-600 transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#services" class="hover:text-red-600 transition-colors">Servicios</a></li>
+                        <li><a href="#products" class="hover:text-red-600 transition-colors">Productos</a></li>
+                        <li><a href="#contact" class="hover:text-red-600 transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-lg">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>Av. Armada Argentina 188, Córdoba</li>
+                        <li>Tel: 877009</li>
+                        <li>WhatsApp: 351 155382361</li>
+                        <li>info@perimetraleslasflorescba.com</li>
+                    </ul>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-red-600 transition-colors"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="mt-8 text-center">
-                <a href="https://dualitydomain.com" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-red-600 transition-colors">
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm">
+                <p>&copy; 2024 Perimetrales Las Flores. Todos los derechos reservados.</p>
+                <a href="https://dualitydomain.com" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block hover:text-red-600 transition-colors">
                     Powered by Duality Domain
                 </a>
             </div>
@@ -338,14 +408,8 @@
         </div>
     </div>
 
-    <!-- Floating Cart Button -->
-    <button id="cartButton" class="fixed bottom-24 right-4 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-700 transition-colors z-40 float-button">
-        <i class="fas fa-shopping-cart text-2xl"></i>
-        <span id="cartCount" class="absolute -top-2 -right-2 bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">0</span>
-    </button>
-
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/543518047696" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors z-40 float-button">
+    <a href="https://wa.me/543518047696" target="_blank" rel="noopener noreferrer" class="float-button fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-colors">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 

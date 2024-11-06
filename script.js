@@ -116,7 +116,7 @@ function updateHeroIndicators() {
         const indicator = document.createElement('div');
         indicator.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white', 'opacity-50', 'cursor-pointer');
         if (index === currentSlide) {
-            indicator.classList.add('opacity-100');
+            indicator.classList.add('opacity-100', 'active');
         }
         indicator.addEventListener('click', () => {
             currentSlide = index;
@@ -132,7 +132,7 @@ function nextHeroSlide() {
 }
 
 updateHeroSlider();
-setInterval(nextHeroSlide, 5000);
+setInterval(nextHeroSlide, 5000); // Cambia cada 5 segundos
 
 // Initialize product slider
 const productSlider = document.getElementById('productSlider');

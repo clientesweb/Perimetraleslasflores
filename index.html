@@ -91,7 +91,7 @@
             }
         }
         #floatingCartButton {
-            bottom: 100px;
+            bottom: 120px;
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
         }
         #floatingCartButton:hover {
@@ -109,15 +109,15 @@
     <div id="topBanner" class="text-white py-2 px-4">
         <div class="banner-slide active">
             <p class="text-sm font-semibold flex-grow">¡Oferta especial! 15% de descuento en todos los cercos este mes.</p>
-            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4">Ver oferta</button>
+            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4 hover:bg-gray-200 transition-colors">Ver oferta</button>
         </div>
         <div class="banner-slide">
             <p class="text-sm font-semibold flex-grow">Nuevo servicio de instalación express. ¡Contáctanos ahora!</p>
-            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4">Contactar</button>
+            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4 hover:bg-gray-200 transition-colors">Contactar</button>
         </div>
         <div class="banner-slide">
             <p class="text-sm font-semibold flex-grow">Garantía de satisfacción del 100% en todos nuestros productos.</p>
-            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4">Saber más</button>
+            <button class="bg-white text-primary px-4 py-1 rounded text-sm ml-4 hover:bg-gray-200 transition-colors">Saber más</button>
         </div>
     </div>
 
@@ -135,9 +135,10 @@
                 <a href="#contact" class="hover:text-primary transition-colors">Contacto</a>
             </nav>
             <div class="hidden md:flex space-x-4">
-                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-facebook-f header-icon"></i></a>
-                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-twitter header-icon"></i></a>
-                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-instagram header-icon"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon text-gray-600 hover:text-primary"><i class="fab fa-linkedin-in"></i></a>
             </div>
             <button id="menuToggle" class="md:hidden">
                 <i class="fas fa-bars"></i>
@@ -163,7 +164,11 @@
             <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                 <div class="text-center text-white">
                     <h1 id="heroTitle" class="text-4xl md:text-6xl font-bold mb-4"></h1>
-                    <p id="heroDescription" class="text-xl md:text-2xl"></p>
+                    <p id="heroDescription" class="text-xl md:text-2xl mb-8"></p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#products" class="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-colors">Ver Productos</a>
+                        <a href="#contact" class="bg-white text-primary px-6 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-colors">Contactar</a>
+                    </div>
                 </div>
             </div>
             <div id="heroIndicators" class="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
@@ -365,16 +370,18 @@
                         <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="127b7c747d526277607b7f776660737e77617e7361747e7d6077617170733c717d7f">[email&#160;protected]</a></li>
                     </ul>
                     <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-facebook-f footer-icon"></i></a>
-                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-twitter footer-icon"></i></a>
-                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-instagram footer-icon"></i></a>
-                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-linkedin-in footer-icon"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition-colors"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-white border-opacity-20 text-center text-sm">
                 <p>&copy; 2024 Perimetrales Las Flores. Todos los derechos reservados.</p>
-                <a href="https://dualitydomain.com" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block hover:text-accent transition-colors">
+                <a href="https://dualit
+
+ydomain.com" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block hover:text-accent transition-colors">
                     Powered by Duality Domain
                 </a>
             </div>
@@ -400,7 +407,7 @@
     </div>
 
     <!-- Floating Cart Button -->
-    <button id="floatingCartButton" class="fixed right-4 bottom-4 bg-gradient text-white p-4 rounded-full shadow-lg z-40 hover:opacity-90 transition-opacity">
+    <button id="floatingCartButton" class="fixed right-4 bottom-20 bg-gradient text-white p-4 rounded-full shadow-lg z-40 hover:opacity-90 transition-opacity">
         <i class="fas fa-shopping-cart"></i>
     </button>
 
@@ -416,9 +423,12 @@
             <div class="p-4">
                 <h3 class="text-lg font-semibold mb-2"></h3>
                 <p class="text-gray-600 mb-4 h-24 overflow-y-auto"></p>
-                <button class="mt-4 bg-gradient text-white px-4 py-2 rounded hover:opacity-90 transition-opacity add-to-cart">
-                    Solicitar Información
-                </button>
+                <div class="flex items-center justify-between">
+                    <input type="number" min="1" value="1" class="w-16 p-1 border border-gray-300 rounded text-center product-quantity">
+                    <button class="bg-gradient text-white px-4 py-2 rounded hover:opacity-90 transition-opacity add-to-cart">
+                        Agregar
+                    </button>
+                </div>
             </div>
         </div>
     </template>

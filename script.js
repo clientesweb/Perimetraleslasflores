@@ -17,7 +17,7 @@ const products = [
     },
     {
         name: 'Mallas electrosoldadas',
-        image: 'img/mallas',
+        image: 'img/mallas.png',
         description: 'Mallas resistentes y duraderas, perfectas para cercos de seguridad en áreas industriales y residenciales.',
         type: 'product'
     },
@@ -41,7 +41,7 @@ const products = [
     },
     {
         name: 'Tejido exagonal',
-        image: 'img/exagonal.png',
+        image: 'img/hexagonal.png',
         description: 'Malla de diseño hexagonal, perfecta para cercos de jardín y contención de animales.',
         type: 'product'
     },

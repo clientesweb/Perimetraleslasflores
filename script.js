@@ -74,6 +74,24 @@ const products = [
         image: 'https://via.placeholder.com/300x200',
         description: 'Consultoría experta para ayudarle a elegir la mejor solución de cercado para su propiedad.',
         type: 'service'
+    },
+    {
+        name: 'Accesorios para cercos',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Variedad de accesorios para complementar y mejorar sus cercos perimetrales.',
+        type: 'product'
+    },
+    {
+        name: 'Accesorios para piletas',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Accesorios de calidad para el mantenimiento y seguridad de su piscina.',
+        type: 'product'
+    },
+    {
+        name: 'Cadenas y sogas',
+        image: 'https://via.placeholder.com/300x200',
+        description: 'Amplia selección de cadenas y sogas para diversas aplicaciones de seguridad y cercado.',
+        type: 'product'
     }
 ];
 
@@ -301,7 +319,7 @@ document.addEventListener('click', (e) => {
 
 requestQuote.addEventListener('click', () => {
     const items = Array.from(cartItems.children).map(item => {
-        const name = item.firstElementChild.textContent.split(' ')[0];
+        const name = item.firstElementChild.textContent.split('(')[0].trim();
         const quantity = item.querySelector('.item-quantity').textContent;
         return `${name} (${quantity})`;
     });

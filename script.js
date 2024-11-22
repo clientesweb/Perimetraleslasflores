@@ -339,54 +339,141 @@ function sendToWhatsApp(event) {
     const whatsappMessage = `*Nuevo contacto desde web*%0A%0A*Nombre:* ${name}%0A*Email:* ${email}%0A*Mensaje:* ${message}`;
 
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-
-    // Reset form
-    event.target.reset();
 }
 
 // Top banner slider
 const bannerSlides = document.querySelectorAll('.banner-slide');
 let currentBannerSlide = 0;
 
-function showBannerSlide(index) {
-    bannerSlides.forEach((slide, i) => {
-        if (i === index) {
-            slide.classList.add('active');
-            slide.style.display = 'flex';
-        } else {
-            slide.classList.remove('active');
-            slide.style.display = 'none';
-        }
-    });
-}
-
-function nextBannerSlide() {
+function showNextBannerSlide() {
+    bannerSlides[currentBannerSlide].classList.remove('active');
     currentBannerSlide = (currentBannerSlide + 1) % bannerSlides.length;
-    showBannerSlide(currentBannerSlide);
+    bannerSlides[currentBannerSlide].classList.add('active');
 }
 
-showBannerSlide(currentBannerSlide);
-setInterval(nextBannerSlide, 5000);
+setInterval(showNextBannerSlide, 5000); // Cambia cada 5 segundos
 
 // Sticky header
 const header = document.getElementById('header');
-let lastScrollTop = 0;
+const topBanner = document.getElementById('topBanner');
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop) {
+function updateHeaderPosition() {
+    if (window.pageYOffset > topBanner.offsetHeight) {
+        header.classList.add('sticky');
         header.style.top = '0';
     } else {
-        header.style.top = '40px';
+        header.classList.remove('sticky');
+        header.style.top = `${topBanner.offsetHeight}px`;
     }
-    lastScrollTop = scrollTop;
+}
+
+window.addEventListener('scroll', updateHeaderPosition);
+window.addEventListener('resize', updateHeaderPosition);
+updateHeaderPosition();
+
+// Initialize AOS
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
 });
 
-// Preloader
-window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader');
-    preloader.classList.add('fade-out');
-    setTimeout(() => {
-        preloader.style.display = 'none';
-    }, 1000);
+// Lazy loading for images
+document.addEventListener("DOMContentLoaded", function() {
+    var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+    if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.classList.remove("lazy");
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        let active = false;
+
+        const lazyLoad = function() {
+            if (active === false) {
+                active = true;
+
+                setTimeout(function() {
+                    lazyImages.forEach(function(lazyImage) {
+                        if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+
+                            lazyImages = lazyImages.filter(function(image) {
+                                return image !== lazyImage;
+                            });
+
+                            if (lazyImages.length === 0) {
+                                document.removeEventListener("scroll", lazyLoad);
+                                window.removeEventListener("resize", lazyLoad);
+                                window.removeEventListener("orientationchange", lazyLoad);
+                            }
+                        }
+                    });
+
+                    active = false;
+                }, 200);
+            }
+        };
+
+        document.addEventListener("scroll", lazyLoad);
+        window.addEventListener("resize", lazyLoad);
+        window.addEventListener("orientationchange", lazyLoad);
+    }
 });
+
+// Form validation
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+    
+    if (name.value.trim() === '') {
+        alert('Por favor, ingrese su nombre.');
+        name.focus();
+        return false;
+    }
+    
+    if (email.value.trim() === '') {
+        alert('Por favor, ingrese su correo electrónico.');
+        email.focus();
+        return false;
+    }
+    
+    if (!isValidEmail(email.value)) {
+        alert('Por favor, ingrese un correo electrónico válido.');
+        email.focus();
+        return false;
+    }
+    
+    if (message.value.trim() === '') {
+        alert('Por favor, ingrese su mensaje.');
+        message.focus();
+        return false;
+    }
+    
+    sendToWhatsApp(event);
+});
+
+function isValidEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}

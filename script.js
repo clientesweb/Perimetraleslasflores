@@ -29,7 +29,7 @@ const products = [
     },
     {
         name: 'Puertas y portones a medida',
-        image: 'img/PORTONES.jpg''img/PUERTAS.jpg',
+        image: 'img/PORTONES.jpg',
         description: 'Soluciones personalizadas para accesos seguros y estéticos, adaptadas a sus necesidades específicas.',
         type: 'product'
     },

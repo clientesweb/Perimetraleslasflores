@@ -83,7 +83,7 @@ const products = [
     },
     {
         name: 'Accesorios para piletas',
-        image: 'img/accesorios pileta.jpg',
+        image: 'img/accesoriospiletas.jpg',
         description: 'Accesorios de alta calidad para el mantenimiento y seguridad de su piscina.',
         type: 'product'
     },

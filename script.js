@@ -29,7 +29,7 @@ const products = [
     },
     {
         name: 'Puertas y portones a medida',
-        image: 'img/portones.png',
+        image: 'img/PORTONES.jpg''img/PUERTAS.jpg',
         description: 'Soluciones personalizadas para accesos seguros y estéticos, adaptadas a sus necesidades específicas.',
         type: 'product'
     },
@@ -59,37 +59,37 @@ const products = [
     },
     {
         name: 'Instalación de Cercos',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/instalacioncercos.jpg',
         description: 'Servicio profesional de instalación de cercos perimetrales para hogares, empresas e industrias.',
         type: 'service'
     },
     {
         name: 'Mantenimiento de Cercos',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/mantenimientocercos.jpg',
         description: 'Servicio de mantenimiento y reparación para mantener sus cercos en óptimas condiciones.',
         type: 'service'
     },
     {
         name: 'Asesoramiento Personalizado',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/atencionpersonalizada.jpg',
         description: 'Consultoría experta para ayudarle a elegir la mejor solución de cercado para su propiedad.',
         type: 'service'
     },
     {
         name: 'Accesorios para cercos',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/accesorios.jpg',
         description: 'Variedad de accesorios para complementar y mejorar sus cercos perimetrales.',
         type: 'product'
     },
     {
         name: 'Accesorios para piletas',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/accesorios pileta.jpg',
         description: 'Accesorios de alta calidad para el mantenimiento y seguridad de su piscina.',
         type: 'product'
     },
     {
         name: 'Cadenas y sogas',
-        image: 'https://via.placeholder.com/300x200',
+        image: 'img/sogas.jpg',
         description: 'Amplia selección de cadenas y sogas para diversos usos en seguridad y construcción.',
         type: 'product'
     }
